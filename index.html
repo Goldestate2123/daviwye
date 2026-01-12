@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <meta charset="UTF-8" />
+  <title>უძრავი ქონების მოთხოვნის ფორმა</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init('RRHxzVoMF-x9snPg7');
+    })();
+  </script>
+
+  <style>
+    * { box-sizing: border-box; }
+    
+    
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: #babbbe;
+      
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 20px auto;
+      background: #cfd9d6;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 14px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    select, input, textarea, button {
+      width: 100%;
+      padding: 10px 12px;
+      margin-top: 6px;
+      border-radius: 8px;
+      border: 1px solid #bfc2c5;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .phone-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    .phone-group select {
+      max-width: 140px;
+    }
+
+    button {
+      margin-top: 24px;
+      background: #4f46e5;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover { background: #3e3696; }
+
+    @media (max-width: 480px) {
+      .phone-group {
+        flex-direction: column;
+      }
+      h1 { font-size: 20px; }
+    }
+
+
+
+
+
+
+
+    .site-footer {
+  background: #3e5390;
+  color: #262121;
+  padding: 25px 20px 15px;
+  font-family: sans-serif;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between; /* მარცხენა და მარჯვენა კუთხეები */
+  align-items: center;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-logo {
+  width: 40px;
+  height: auto;
+}
+
+.footer-name {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.footer-socials a {
+  color: #221a1a;
+  margin-left: 15px;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+
+.footer-socials a:hover {
+  color: #00bcd4;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>უძრავი ქონების მოთხოვნა </h1>
+
+
+    <label>რას ეძებთ</label>
+    <select type="text" id="propertyType">
+      <option>ბინა</option>
+      <option>კერძო სახლი</option>
+      <option>კომერციული ფართი</option>
+      <option>სასტუმრო</option>
+      <option>მიწის ნაკვეთი</option>
+    </select>
+
+
+    <label>გარიგების ტიპი</label>
+    <select type="text" id="dealType">
+      <option>ყიდვა</option>
+      <option>ქირაობა</option>
+    </select>
+
+
+    <form id="estateForm">
+      <label>უბანი</label>
+      <select id="district">
+        <option>საბურთალო</option>
+        <option>ვაკე</option>
+        <option>ბაგები</option>
+        <option>ვერა</option>
+        <option>სოლოლაკი</option>
+        <option>მთაწმინდა</option>
+        <option>წერეთელი</option>
+        <option>ნაძალადევი</option>
+        <option>დიღმის მასივი</option>
+        <option>დიდი დიღომი</option>
+        <option>ვაშლი ჯვარი</option>
+        <option>ლისი</option>
+        <option>სანზონა</option>
+        <option>თემქა</option>
+        <option>მუხიანი</option>
+        <option>გლდანი</option>
+        <option>ისანი</option>
+        <option>სამგორი</option>
+        <option>ვარკეთილი</option>
+        <option>ავლაბარი</option>
+        <option>ჩუღურეთი</option>
+        <option>ორთაჭალა</option>
+        <option>კრწანისი</option>
+      </select>
+
+   
+      <label>საძინებლის რაოდენობა</label>
+      <select type="text" id="bedrooms">
+        <option>სტუდიო</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>3+</option>
+      </select>
+
+      <label for="budget">ბიუჯეტი *</label>
+<input
+  type="number"
+  id="budget"
+  name="budget"
+  placeholder="$100000"
+  min="0"
+  step="100"
+  required
+/>
+
+      <!-- <label>ბიუჯეტი *</label>
+      <input type="number" id="budget" required /> -->
+
+      <label>სახელი *</label>
+      <input type="text" id="firstName" required />
+
+      <label>ტელეფონის ნომერი *</label>
+      <div class="phone-group">
+        <select id="countryCode">
+          <option value="+995">🇬🇪საქართველო ❤️ +995</option>
+          <option value="+1">🇺🇸 აშშ  +1</option>
+          <option value="+1">🇨🇦 კანადა (+1)</option>
+          <option value="+44">🇬🇧 დიდი ბრიტანეთ +44</option>
+          <option value="+33">🇫🇷 საფრანგეთი (+33)</option>
+          <option value="+39">🇮🇹 იტალია (+39)</option>
+          <option value="+972">🇮🇱 ისრაელი (+972)</option>
+          <option value="+380">🇺🇦 უკრაინა (+380)</option>
+          <option value="+30">🇬🇷 საბერძნეთი (+30)</option>
+          <option value="+370">🇱🇹 ლიეტუვა (+370)</option>
+          <option value="+375">🇧🇾 ბელარუსი (+375)</option>
+          <option value="+371">🇱🇻 ლატვია (+371)</option>
+          <option value="+372">🇪🇪 ესტონეთი (+372)</option>
+          <option value="+381">🇷🇸 სერბეთი (+381)</option>
+          <option value="+48">🇵🇱 პოლონეთი (+48)</option>
+          <option value="+46">🇸🇪 შვედეთი (+46)</option>
+          <option value="+49">🇩🇪 გერმანია +49</option>
+          <option value="+90">🇹🇷 თურქეთი +90</option>
+          <option value="+7"> რუსეთი (+7)</option>
+          <option value="+994">🇦🇿 აზერბაიჯანი (+994)</option>
+          <option value="+374">🇦🇲 სომხეთი (+374)</option>
+            <option value="+966">🇸🇦 საუდის არაბეთი (+966)</option>
+            <option value="+971">🇦🇪 არაბთა გაერთიანებული საამიროები (+971)</option>
+            <option value="+82">🇰🇷 სამხრეთ კორეა (+82)</option>
+            <option value="+86">🇨🇳 ჩინეთი (+86)</option>
+            <option value="+91">🇮🇳 ინდოეთი (+91)</option>
+            <option value="+92">🇵🇰 პაკისტანი (+92)</option>
+            <option value="+20">🇪🇬 ეგვიპტე (+20)</option>
+            <select id="countryCode">
+            
+          </select>
+          
+        </select>
+        <input type="tel" id="phone" placeholder="მობილურის ნომერი" required />
+      </div>
+
+      <label>ელ-ფოსტა (არასავალდებულო)</label>
+      <input type="email" id="email" />
+
+      <label>დამატებითი ინფორმაცია</label>
+      <textarea id="description" placeholder="მოგვწერეთ დამატებითი დეტალები..."></textarea>
+
+      <button type="submit">გაგზავნა</button>
+      
+      
+      
+
+     
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('estateForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const fullPhone = document.getElementById('countryCode').value + document.getElementById('phone').value;
+
+      const templateParams = {
+        property: document.getElementById('propertyType').value,
+        deal: document.getElementById('dealType').value,
+        budget: document.getElementById('budget').value,
+        bedrooms: document.getElementById('bedrooms').value,
+        district: document.getElementById('district').value,
+        name: document.getElementById('firstName').value,
+        phone: fullPhone,
+        email: document.getElementById('email').value || 'არ არის მითითებული',
+        description: document.getElementById('description').value || 'არ არის დამატებითი ინფორმაცია'
+      };
+ 
+
+
+      emailjs.send('service_zjh0t5s', 'template_6f84axc', templateParams)
+        .then(() => {
+          alert('მოთხოვნა წარმატებით გაიგზავნა, მადლობა ნდობისთის');
+          document.getElementById('estateForm').reset();
+        })
+        .catch(() => {
+          alert('შეცდომა გაგზავნისას');
+        });
+    });
+  </script>
+
+
+<footer class="site-footer">
+  <div class="footer-top">
+
+    <!-- მარცხენა მხარე -->
+    <div class="footer-left">
+      <img src="banner-image.jpg" alt="" class="footer-logo">
+      <span class="footer-name" >SDLHOME</span>
+    </div>
+
+    <!-- მარჯვენა მხარე -->
+    <div class="footer-socials">
+      <a href="https://www.facebook.com/dato.kukava.52" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.facebook.com/dato.kukava.52" aria-label="Facebook"><i class="fa-brands fa-facebook-messenger"></i></a>
+      <a href="https://www.facebook.com/dato.kukava.52" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/dato.kukava.52" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    </div>
+
+  </div>
+
+  <!-- ქვედა ტექსტი -->
+  <div class="footer-bottom">
+    © All rights reserved — Creator: <a href="https://www.instagram.com/saba.tchrelashvili/">Saba Tchrelashvili</a>
+  </div>
+</footer>
+
+
+    
+  </footer>
+  
+  
+  
+</body>
+
+
+
+</html>
+
+
+<!-- 
+1234 დასდ
+const templateParams = {
+    property_type: document.getElementById('property_kind').value,
+    deal_type: document.getElementById('dealType').value,
+    district: document.getElementById('district').value,
+    bedrooms: document.getElementById('bedrooms').value,
+    budget: document.getElementById('budget').value,
+    name: document.getElementById('name').value,
+    phone: fullPhone,
+    email: document.getElementById('email').value || 'არ არის მითითებული',
+    description: document.getElementById('description').value || 'არ არის დამატებითი ინფორმაცია'
+  }; -->
